@@ -8,5 +8,8 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
-  base: "/git_test_v2"
+  base: "/git_test_v2",
+  server: {
+    port: 8080
+  }
 })
