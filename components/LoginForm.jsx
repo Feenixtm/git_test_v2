@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 
-const SignUpForm = () => {
+const LoginForm = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -33,9 +33,9 @@ const SignUpForm = () => {
 
     return (
         <div>
-            <h1 className='text-[1.25rem] font-semibold'>SIGN-UP</h1>
+            <h1 className='text-[1.25rem] font-semibold'>LOGIN</h1>
         
-            <form className='flex flex-col gap-1 max-w-[16rem] '>
+            <form className='flex flex-col gap-1 max-w-[16rem]'>
                 <div className='flex flex-col'>
                     <label htmlFor="">Username</label>
                     <input type="text" className='border'value={username} onChange={(e) => setUsername(e.target.value)}/>
@@ -46,10 +46,10 @@ const SignUpForm = () => {
                     <input type="password" className='border'value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
 
-                <button className='border px-4 py-1 cursor-pointer' onClick={(e) => submitForm(e, username, password)}>Sign Up</button>
+                <button className='border px-4 py-1 cursor-pointer' onClick={(e) => submitForm(e, username, password)}>Log In</button>
             </form>
         </div>
     )
 }
 
-export default SignUpForm
+export default LoginForm
