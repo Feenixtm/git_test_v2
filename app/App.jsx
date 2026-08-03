@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import '../styles/App.css'
+import SignUpForm from '../components/SignUpForm'
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <div>
-      <h1 className='text-red-500'>Organized Folders!</h1>
-    </div>
-  )
+
+	return (
+		<>
+			<h1 className='text-red-500'>Blog Site</h1>
+			<SignUpForm/>
+		</>
+	)
 }
 
 export default App

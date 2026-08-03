@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+#root {
+    padding: 1rem;
+}
+
+/* EntryForm.jsx Styling */
+
+.journal-entry-textarea {
+    border: 1px solid black;
+}
+
+/* --------------------- */
