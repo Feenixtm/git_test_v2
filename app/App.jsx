@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
 import '../styles/App.css'
+
 import SignUpForm from '../components/SignUpForm'
 import LoginForm from '../components/LoginForm';
 import AllBlogs from '../components/AllBlogs';
+import Blog from '../components/Blog';
 
 function App() {
 	
@@ -18,7 +22,7 @@ function App() {
 				}
 
 				const data = await response.json();
-				console.log(data);
+				// console.log(data);
 			} catch (error) {
 				console.error("Fatal error:", error);
 			}		
@@ -27,14 +31,25 @@ function App() {
 		getData();
 	}, [])
 
-	return (
-		<div className='flex flex-col gap-8'>
-			<h1 className='text-red-500'>Blog Site</h1>
+	const Home = () => {
+		return (
+			<div className='flex flex-col gap-8'>
+				<h1 className='text-red-500'>Blog Site</h1>
 
-			<AllBlogs/>
-			<SignUpForm/>
-			<LoginForm/>
-		</div>
+				<AllBlogs Link={ Link }/>
+				<SignUpForm/>
+				<LoginForm/>
+			</div>
+		)
+	}
+
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route path="/git_test_v2" element={ <Home/> }/>
+				<Route path="/git_test_v2/:id" element={ <Blog/> }/>
+			</Routes>
+		</BrowserRouter>
 	)
 }
 

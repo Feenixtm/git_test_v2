@@ -2,7 +2,9 @@ import React from 'react'
 
 import { useState, useEffect } from "react";
 
-const AllBlogs = () => {
+const AllBlogs = (props) => {
+    const Link = props.Link;
+    
     const [allBlogs, setAllBlogs] = useState([]);
 
     useEffect(() => {
@@ -18,7 +20,7 @@ const AllBlogs = () => {
                 }
 
                 const data = await response.json();
-                // console.log(data);
+                console.log(data);
 
                 setAllBlogs([...data]);
 
@@ -38,10 +40,10 @@ const AllBlogs = () => {
                 {
                     allBlogs.map((blog, index) => {
                         return (
-                            <a href='http://www.google.com' className='flex flex-col gap-2 border p-4 w-fit'>
+                            <Link to={`http://localhost:8080/git_test_v2/${ blog.id }`} title={`http://localhost:8080/git_test_v2/${ blog.id }`} className='flex flex-col gap-2 border p-4 w-fit'>
                                 <h2>{ blog.title }</h2>
                                 <p className='text-[0.75rem]'>{ blog.content }</p>
-                            </a>
+                            </Link>
                         )
                     })
                 }
