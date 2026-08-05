@@ -9,26 +9,26 @@ const SignUpForm = () => {
         e.preventDefault();
 
         console.log("Submitting form...")
-        console.log({ username: username, password: password });
+        // console.log({ username: username, password: password });
 
-        // try {
-        //     const response = await fetch("http://localhost:5050/sign-up", {
-        //         method: "POST",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //         body: JSON.stringify({ username, password }),
-        //     });
+        try {
+            const response = await fetch("http://localhost:5050/sign-up", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ username, password }),
+            });
 
-        //     if (!response.ok) {
-        //         throw new Error("Authentication failed");
-        //     }
+            if (!response.ok) {
+                throw new Error("Authentication failed");
+            }
 
-        //     const data = await response.json();
-        //     console.log(data);
-        // } catch (error) {
-        //     console.error("Fatal error:" + error);
-        // }
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error("Fatal error:" + error);
+        }
     }
 
     return (
