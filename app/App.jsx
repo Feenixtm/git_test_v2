@@ -9,7 +9,7 @@ import AllBlogs from '../components/AllBlogs';
 import Blog from '../components/Blog';
 
 function App() {
-	
+	const [currentUser, setCurrentUser] = useState(null);
 
 	useEffect(() => {
 		// console.log("Fetching...")
@@ -34,11 +34,17 @@ function App() {
 	const Home = () => {
 		return (
 			<div className='flex flex-col gap-8'>
-				<h1 className='text-red-500'>Blog Site</h1>
+				<div className='flex gap-4'>
+					<h1 className='text-red-500'>Blog Site</h1>
+
+					{
+						currentUser !== null && <p>Hello { currentUser.username }</p>
+					}
+				</div>
 
 				<AllBlogs Link={ Link }/>
 				<SignUpForm/>
-				<LoginForm/>
+				<LoginForm setCurrentUser={ setCurrentUser }/>
 			</div>
 		)
 	}

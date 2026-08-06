@@ -1,34 +1,35 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 
-const LoginForm = () => {
+const LoginForm = (props) => {
+    const setCurrentUser = props.setCurrentUser;
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const submitForm = async (e, username, password) => {
         e.preventDefault();
 
-        console.log("Submitting form...")
-        console.log({ username: username, password: password });
+        try {
+            const response = await fetch("http://localhost:5050/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ username, password })
+            });
 
-        // try {
-        //     const response = await fetch("http://localhost:5050/sign-up", {
-        //         method: "POST",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //         body: JSON.stringify({ username, password }),
-        //     });
+            if (!response.ok) {
+                throw new Error("Authentication failed");
+            }
 
-        //     if (!response.ok) {
-        //         throw new Error("Authentication failed");
-        //     }
+            const data = await response.json();
+            setCurrentUser(data);
+            console.log(data);
 
-        //     const data = await response.json();
-        //     console.log(data);
-        // } catch (error) {
-        //     console.error("Fatal error:" + error);
-        // }
+        } catch (error) {
+            console.error(`Error occurred when trying to log in:` + error);
+        }
     }
 
     return (

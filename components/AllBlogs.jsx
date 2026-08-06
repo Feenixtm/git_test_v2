@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 const AllBlogs = (props) => {
     const Link = props.Link;
-    
+
     const [allBlogs, setAllBlogs] = useState([]);
 
     useEffect(() => {

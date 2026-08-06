@@ -1,8 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-const Blog = () => {
+const Blog = (props) => {
+
     const { id } = useParams();
     const [blog, setBlog] = useState({
         title: "ERROR. TITLE MISSING",
@@ -35,7 +37,7 @@ const Blog = () => {
         <div>
             <h1>{ blog.title }</h1>
             <p>{ blog.content }</p>
-            <p>I'm still here</p>
+            <Link className='link-text' to="/git_test_v2/">Return Home</Link>
         </div>
     )
 }
